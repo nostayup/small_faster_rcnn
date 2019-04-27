@@ -7,6 +7,7 @@ Created on Thu Apr 25 00:19:14 2019
 """
 from PIL import Image
 import numpy as np
+import random
 
 def read_image(path , dtype = np.float32):
     '''
@@ -70,7 +71,27 @@ def flip_bbox(bbox, size, y_flip = False, x_flip= False):
         flip_bbox[:, 3] = x_max
     return flip_bbox
 
-
+def random_flip(img, y_random=False, x_random=False,
+                     return_param=False, copy=False):
+    '''
+    args:
+        img: CHW格式的np.ndarry数组
+        return_param: 是否返回翻转信息
+    '''
+    if y_random:
+        y_flip = random.choice([True, False])
+        if y_flip:
+            img = img[:, ::-1, :]
+    if x_random:
+        x_flip = random.choice([True, False])
+        if x_flip:
+            img = img[::-1, :, :]
+    
+    if return_param:
+        return img, {'y_flip':y_flip, 'x_flip':x_flip}
+    else:
+        return img
+        
 
 
 
