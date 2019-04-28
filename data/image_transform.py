@@ -26,13 +26,10 @@ def read_image(path , dtype = np.float32):
         return img.transpose((2,0,1))
     
     
-'''*******************************
-********变换的不变点怎么定的******
-**********************************
-'''
+
 def resize_bbox(bbox , in_size , out_size):
     '''
-    返回重新变换bbox框大小的宽高
+    根据图片变换的比值，返回重新变换bbox框大小的宽高
     bbox : 输入格式是二维数组，0维是图片编号，1维是`(y_{min}, x_{min}, y_{max}, x_{max})`
     in/out_size : 是(高，宽)
     '''
@@ -46,11 +43,8 @@ def resize_bbox(bbox , in_size , out_size):
     return new_bbox
 
     
-'''***************************************
-********怎么翻转的，编号是不是搞错了******
-******************************************'''    
 def flip_bbox(bbox, size, y_flip = False, x_flip= False):
-    '''翻转bbox
+    '''当图片翻转时，对应的该方向翻转bbox
     args:
         bbox: 同resize_bbox
         size: (H,W)
@@ -78,6 +72,7 @@ def random_flip(img, y_random=False, x_random=False,
         img: CHW格式的np.ndarry数组
         return_param: 是否返回翻转信息
     '''
+    y_flip, x_flip = False, False
     if y_random:
         y_flip = random.choice([True, False])
         if y_flip:

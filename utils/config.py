@@ -8,7 +8,7 @@ Created on Sat Apr 27 16:28:21 2019
 
 class config:
     '''data'''
-    voc_data_dir ='../VOCdevkit/VOC2007'
+    voc_data_dir ='/home/lierlong/code/simple_faster_rcnn_bylerl/VOCdevkit/VOC2007/'
     min_size = 600
     max_size = 1000  #image resize 
     num_works = 8

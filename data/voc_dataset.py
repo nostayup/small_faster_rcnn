@@ -4,6 +4,10 @@
 Created on Sat Apr 27 10:40:18 2019
 
 @author: lierlong
+
+实现对原始信息的提取，并未作处理
+image_transform: 数据变换(翻转等)
+dataset: 实现面向网络的变换
 """
 import os
 import numpy as np
