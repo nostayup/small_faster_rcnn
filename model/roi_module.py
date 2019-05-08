@@ -31,6 +31,8 @@ cuda_num_threads = 1024
 def get_blocks(n,k=cuda_num_threads):
     return (n+k-1)//k
 
+
+#TODO:主要部分都是在roi_cupy中完成，需要完善。
 class RoI(Function):
     def __init__(self,outh,outw,spatial_scale):
         self.forward_fn = load_kernel('roi_forward',kernel_forward)
