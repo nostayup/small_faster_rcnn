@@ -42,6 +42,29 @@ class FasterRCNN(nn.Module):
         loc_normalize_mean(type=tuple):位置估计平均值
         loc_normalize_std(type=tuple):位置估计偏差
     '''
+    def __init__(self,extractor, rpn, head,
+                 loc_normalize_mean = (0., 0., 0., 0.),
+                 loc_normalize_std=(0.1,0.1,0.2,0.2)):
+        super(FasterRCNN, self).__init__()
+        self.extractor = extractor
+        self.rpn = rpn
+        self.head = head
+        
+        self.loc_normalize_mean = loc_normalize_mean
+        self.loc_normalize_std = loc_normalize_std
+        self.use_preset('evaluate')
+        
+    @property
+    def n_class(self):
+        #Total numbel of class including the backgrand
+        return self.head.n_class
+    
+    def forward(self, x, scale=1.):
+        
+        
+        
+        
+        
     
     
     
