@@ -17,6 +17,10 @@ class config:
     caffe_pretrain = False
     caffe_pretrain_path = 'checkpoints/vgg16_caffe.pth'
     
+    lr = 1e-3
+    lr_decay = 0.1
+    weight_decay = 0.0005
+    
     
 opt = config
     
